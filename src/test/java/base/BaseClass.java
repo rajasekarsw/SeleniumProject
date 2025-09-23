@@ -22,7 +22,7 @@ public class BaseClass {
     public static  WebDriver getDriver(){
 
         ChromeOptions options = new ChromeOptions();
-     //   options.addArguments("--headless=new");  // Run headless (required in CI)
+       options.addArguments("--headless=new");  // Run headless (required in CI)
         options.addArguments("--no-sandbox");    // Avoid sandboxing issues in containers
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
