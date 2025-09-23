@@ -40,3 +40,20 @@ jobs:
           name: Extent-Report
           path: reports/*.html
 
+      - name: Send Email with Extent Report
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com       # Gmail SMTP server
+          server_port: 465                     # Secure SSL port
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Extent Report - ${{ github.repository }} [${{ github.run_number }}]"
+          to: ravanansr7@gmail.com
+          from: "GitHub Actions rajrams104@gmail.com"
+          body: |
+            Hello,
+            The Maven test run for ${{ github.repository }} has completed.
+            Please find the Extent Report attached.
+          attachments: "reports/*.html"
+   
+
