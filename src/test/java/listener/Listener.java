@@ -32,7 +32,7 @@ public class Listener implements ITestListener {
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat();
 
         reports=new ExtentReports();
-        ExtentSparkReporter reporter=new ExtentSparkReporter("reports1.html");
+        ExtentSparkReporter reporter=new ExtentSparkReporter("reports/reports1.html");
         reports.attachReporter(reporter);
     }
 
