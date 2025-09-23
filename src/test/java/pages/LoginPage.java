@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
         this.userName.sendKeys(username);
     }
     public void enterPassword(String password){
-        this.password.sendKeys(password);
+         this.password.sendKeys(password);
     }
 
     public void login(){

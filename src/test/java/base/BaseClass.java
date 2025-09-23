@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class BaseClass {
@@ -20,11 +22,16 @@ public class BaseClass {
     public static  WebDriver getDriver(){
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");  // Run headless (required in CI)
+     //   options.addArguments("--headless=new");  // Run headless (required in CI)
         options.addArguments("--no-sandbox");    // Avoid sandboxing issues in containers
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("credentials_enable_service", false);
+        prefs.put("profile.password_manager_enabled", false);
+        options.setExperimentalOption("prefs", prefs);
+
 
         // Fix: unique user-data-dir so we don't hit "already in use"
         try {
